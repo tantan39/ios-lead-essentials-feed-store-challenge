@@ -22,6 +22,8 @@
 		08F35C7A2616166600AFE277 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F35C772616166600AFE277 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */; };
 		08F35C7B2616166600AFE277 /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F35C782616166600AFE277 /* XCTestCase+FailableInsertFeedStoreSpecs.swift */; };
 		A7C2AC54266FDFC0004A6D61 /* FeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7C2AC52266FDFC0004A6D61 /* FeedStore.xcdatamodeld */; };
+		A7C2AC57267058BE004A6D61 /* ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C2AC56267058BE004A6D61 /* ManagedCache.swift */; };
+		A7C2AC59267058F9004A6D61 /* ManagedFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C2AC58267058F9004A6D61 /* ManagedFeedImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		08F35C772616166600AFE277 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableRetrieveFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		08F35C782616166600AFE277 /* XCTestCase+FailableInsertFeedStoreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableInsertFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		A7C2AC53266FDFC0004A6D61 /* FeedStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedStore.xcdatamodel; sourceTree = "<group>"; };
+		A7C2AC56267058BE004A6D61 /* ManagedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCache.swift; sourceTree = "<group>"; };
+		A7C2AC58267058F9004A6D61 /* ManagedFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFeedImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 		08CE2B8D2285BBD100183A1B /* FeedStoreChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				A7C2AC55267058A5004A6D61 /* Infrastructure */,
 				08CB21E1261638BA00751C29 /* Helpers */,
 				08CE2BA72285BCC600183A1B /* LocalFeedImage.swift */,
 				08CE2BA52285BCB600183A1B /* FeedStore.swift */,
@@ -145,6 +150,15 @@
 				08CB21DD2616389100751C29 /* NSManagedObjectContext+Stub.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A7C2AC55267058A5004A6D61 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				A7C2AC56267058BE004A6D61 /* ManagedCache.swift */,
+				A7C2AC58267058F9004A6D61 /* ManagedFeedImage.swift */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,9 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7C2AC57267058BE004A6D61 /* ManagedCache.swift in Sources */,
 				08CB21D1261632DB00751C29 /* CoreDataHelpers.swift in Sources */,
 				A7C2AC54266FDFC0004A6D61 /* FeedStore.xcdatamodeld in Sources */,
 				08F35C6F261612AE00AFE277 /* CoreDataFeedStore.swift in Sources */,
+				A7C2AC59267058F9004A6D61 /* ManagedFeedImage.swift in Sources */,
 				08CE2BA62285BCB600183A1B /* FeedStore.swift in Sources */,
 				08CE2BA82285BCC600183A1B /* LocalFeedImage.swift in Sources */,
 			);
