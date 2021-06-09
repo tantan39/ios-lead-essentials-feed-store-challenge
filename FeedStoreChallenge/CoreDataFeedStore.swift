@@ -32,13 +32,13 @@ public final class CoreDataFeedStore: FeedStore {
 		let context = self.context
 		context.perform {
 			do {
-				let request = NSFetchRequest<ManagedCache>(entityName: ManagedCache.entity().name!)
-				request.returnsObjectsAsFaults = false
-				if let cache = try context.fetch(request).first {
+				if let cache = try ManagedCache.find(in: context) {
 					completion(.found(feed: cache.localFeed, timestamp: cache.timestamp))
+					
 				} else {
 					completion(.empty)
 				}
+				
 			} catch {
 				completion(.failure(error))
 			}
@@ -49,23 +49,13 @@ public final class CoreDataFeedStore: FeedStore {
 		let context = self.context
 		context.perform {
 			do {
-				let request = NSFetchRequest<ManagedCache>(entityName: ManagedCache.entity().name!)
-				_ = try context.fetch(request).first.map(context.delete)
-
-				let cache = ManagedCache(context: context)
-
+				let cache = try ManagedCache.newUniqueInstance(in: context)
 				cache.timestamp = timestamp
-				cache.feed = NSOrderedSet(array: feed.map({ local in
-					let managedFeedImage = ManagedFeedImage(context: context)
-					managedFeedImage.id = local.id
-					managedFeedImage.imageDescription = local.description
-					managedFeedImage.location = local.location
-					managedFeedImage.url = local.url
-					return managedFeedImage
-				}))
+				cache.feed = ManagedFeedImage.images(feed: feed, in: context)
 
 				try context.save()
 				completion(nil)
+				
 			} catch {
 				context.rollback()
 				completion(error)
@@ -77,10 +67,10 @@ public final class CoreDataFeedStore: FeedStore {
 		let context = self.context
 		context.perform {
 			do {
-				let request = NSFetchRequest<ManagedCache>(entityName: ManagedCache.entity().name!)
-				_ = try context.fetch(request).first.map(context.delete).map(context.save)
+				try ManagedCache.find(in: context).map(context.delete).map(context.save)
 
 				completion(nil)
+				
 			} catch {
 				context.rollback()
 				completion(error)
